@@ -1,4 +1,3 @@
-from modelo_pelicula import Pelicula
 class Actor:
     def __init__(self, nombre, pelicula=None):
         self.__nombre = nombre
