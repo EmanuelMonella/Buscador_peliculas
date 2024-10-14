@@ -5,7 +5,8 @@ from PySide6.QtWidgets import QApplication, QWidget, QMessageBox, QVBoxLayout, Q
 from PySide6.QtGui import QPixmap
 from buscador2 import Ui_Buscador
 
-#Pasar todo a privado, separar ventanas, pasar a mvc
+#Pasar todo a privado, separar ventanas, pasar a mvc, poner posters
+
 
 
 class BuscadorPeliculas(QWidget):
