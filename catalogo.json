@@ -3,7 +3,8 @@
         "titulo": "Inception",
         "actores": ["Leonardo DiCaprio", "Joseph Gordon-Levitt"],
         "sinopsis": "Un ladrón que roba secretos a través de los sueños.",
-        "puntuacion": 8.8
+        "puntuacion": 8.8,
+        "poster": "uno.png"
     },
     {
         "titulo": "The Matrix",

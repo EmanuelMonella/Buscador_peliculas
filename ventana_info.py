@@ -12,7 +12,7 @@ class VentanaInfo(QWidget):
         actores = ", ".join(pelicula.get('actores', ['No hay actores disponibles']))
         self.label_actores = QLabel(f"<b>Actores:</b> {actores}")
         layout.addWidget(self.label_actores)
-        self.label_sinopsis = QLabel(f"<b>Sinopsis:</b> {pelicula.get('sinopsis', 'No hay sinopsis disponible.')}")
+        self.label_sinopsis = QLabel(f"<b>Sinopsis:</b> {pelicula['sinopsis']}")
         layout.addWidget(self.label_sinopsis)
         puntuacion = pelicula.get('puntuacion', 'No hay puntuación disponible.')
         self.label_puntuacion = QLabel(f"<b>Puntuación:</b> {puntuacion}")
