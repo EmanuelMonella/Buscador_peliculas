@@ -1,27 +1,19 @@
-from PySide6.QtWidgets import QApplication, QWidget, QVBoxLayout, QLabel
+from PySide6.QtWidgets import QWidget
 from PySide6.QtGui import QPixmap
+from pantalla_resultado import Ui_info_peliculas
+
 
 class VentanaInfo(QWidget):
     def __init__(self, pelicula):
         super().__init__()
-        self.setWindowTitle("Información de la Película")
-        self.setGeometry(100, 100, 400, 400)
-        layout = QVBoxLayout()
-        self.label_titulo = QLabel(f"<b>Título:</b> {pelicula['titulo']}")
-        layout.addWidget(self.label_titulo)
+        self.ui = Ui_info_peliculas()
+        self.ui.setupUi(self)
+        self.ui.resultado_titulo.setText(pelicula['titulo'])
         actores = ", ".join(pelicula.get('actores', ['No hay actores disponibles']))
-        self.label_actores = QLabel(f"<b>Actores:</b> {actores}")
-        layout.addWidget(self.label_actores)
-        self.label_sinopsis = QLabel(f"<b>Sinopsis:</b> {pelicula['sinopsis']}")
-        layout.addWidget(self.label_sinopsis)
+        self.ui.resultado_actores.setText(actores)
+        self.ui.resultado_sinopsis.setPlainText(pelicula['sinopsis'])
         puntuacion = pelicula.get('puntuacion', 'No hay puntuación disponible.')
-        self.label_puntuacion = QLabel(f"<b>Puntuación:</b> {puntuacion}")
-        layout.addWidget(self.label_puntuacion)
+        self.ui.resultado_puntuacion.setText(str(puntuacion))
         if 'poster' in pelicula:
-            self.label_poster = QLabel()
-            self.label_poster.setPixmap(QPixmap(pelicula['poster']))
-            self.label_poster.setScaledContents(True)
-            layout.addWidget(self.label_poster)
-        self.setLayout(layout)
-
-
+            self.ui.label_poster.setPixmap(QPixmap(pelicula['poster']))
+            self.ui.label_poster.setScaledContents(True)

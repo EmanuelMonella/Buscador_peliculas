@@ -1,0 +1,51 @@
+[
+    {
+        "titulo": "Inception",
+        "actores": ["Leonardo DiCaprio", "Joseph Gordon-Levitt"],
+        "sinopsis": "Un ladrón que roba secretos a través de los sueños.",
+        "puntuacion": 8.8,
+        "poster": "peliculas/inception.jpeg"
+    },
+    {
+        "titulo": "Matrix",
+        "actores": ["Keanu Reeves", "Laurence Fishburne"],
+        "sinopsis": "Un hacker descubre la verdad sobre su realidad.",
+        "puntuacion": 8.7,
+        "poster": "peliculas/matrix.jpeg"
+    },
+    {
+        "titulo": "Interstellar",
+        "actores": ["Matthew McConaughey", "Anne Hathaway"],
+        "sinopsis": "Un grupo de exploradores viaja a través de un agujero de gusano en el espacio.",
+        "puntuacion": 8.6,
+        "poster": "peliculas/insterstellar.jpeg"
+    },
+    {
+        "titulo": "El padrino",
+        "actores": ["Marlon Brando", "Al Pacino"],
+        "sinopsis": "La historia de una familia de la mafia en Nueva York.",
+        "puntuacion": 9.2,
+        "poster": "peliculas/the_godftaher.jpg"
+    },
+    {
+        "titulo": "El señor de los anillos: El retorno del rey",
+        "actores": ["Elijah Wood", "Viggo Mortensen"],
+        "sinopsis": "La batalla final por la Tierra Media se acerca.",
+        "puntuacion": 8.9,
+        "poster": "peliculas/the_lord.jpeg"
+    },
+    {
+        "titulo": "Rey león",
+        "actores": ["Matthew Broderick", "James Earl Jones"],
+        "sinopsis": "La historia de un joven león que debe reclamar su trono.",
+        "puntuacion": 8.5,
+        "poster": "peliculas/rey.jpeg"
+    },
+    {
+        "titulo": "Volver al futuro",
+        "actores": ["Michael J. Fox", "Christopher Lloyd"],
+        "sinopsis": "Un adolescente viaja en el tiempo para asegurarse de que sus padres se conozcan.",
+        "puntuacion": 8.5,
+        "poster": "peliculas/volver.jpg"
+    }
+]

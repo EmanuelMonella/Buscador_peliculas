@@ -9,17 +9,17 @@ class BuscadorPeliculas(QWidget):
         super().__init__()
         self.ui = Ui_Buscador()
         self.ui.setupUi(self)
-        self.catalogo = self.cargar_catalogo()
+        self.__catalogo = self.__cargar_catalogo()
 
-    def cargar_catalogo(self):
-        with open('catalogo.json', 'r') as file:
+    def __cargar_catalogo(self):
+        with open('peliculas/catalogo.json', 'r') as file:
             return json.load(file)
 
     def __buscar_pelicula(self):
         nombre_pelicula = self.ui.input_pelicula.text().strip().lower()
         self.ui.lista_resutado.clear()
         if nombre_pelicula:
-            coincidencias = [p for p in self.catalogo if nombre_pelicula in p['titulo'].lower()]
+            coincidencias = [p for p in self.__catalogo if nombre_pelicula in p['titulo'].lower()]
             if coincidencias:
                 for pelicula in coincidencias:
                     item = QListWidgetItem(pelicula['titulo'])
@@ -41,5 +41,5 @@ class BuscadorPeliculas(QWidget):
             QMessageBox.warning(self, "Advertencia", "Por favor, seleccione una película.")
 
     def __abrir_busqueda_por_actor(self):
-        self.ventana_actor = VentanaBuscarPorActor(self.catalogo)
+        self.ventana_actor = VentanaBuscarPorActor(self.__catalogo)
         self.ventana_actor.show()
