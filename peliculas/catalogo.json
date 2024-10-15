@@ -1,7 +1,7 @@
 [
     {
         "titulo": "Inception",
-        "actores": ["Leonardo DiCaprio", "Joseph Gordon-Levitt"],
+        "actores": ["hola", "chau"],
         "sinopsis": "Un ladrón que roba secretos a través de los sueños.",
         "puntuacion": 8.8,
         "poster": "peliculas/inception.jpeg"

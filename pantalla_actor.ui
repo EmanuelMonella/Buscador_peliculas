@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>actor</class>
+ <widget class="QWidget" name="actor">
+  <property name="windowModality">
+   <enum>Qt::WindowModality::NonModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>422</width>
+    <height>184</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Busqueda por actor</string>
+  </property>
+  <property name="windowIcon">
+   <iconset theme="QIcon::ThemeIcon::UserAvailable"/>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="2" column="0">
+    <widget class="QPushButton" name="boton_buscar">
+     <property name="text">
+      <string>Buscar</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QLineEdit" name="input_busqueda"/>
+   </item>
+   <item row="0" column="0">
+    <widget class="QLabel" name="label_busqueda">
+     <property name="text">
+      <string>Ingrese el nombre de dos actores (separados por comas):</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QListWidget" name="resultados"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>boton_buscar</sender>
+   <signal>clicked()</signal>
+   <receiver>actor</receiver>
+   <slot>_VentanaBuscarPorActor__buscar_actor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>230</x>
+     <y>91</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>420</x>
+     <y>87</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>_VentanaBuscarPorActor__buscar_actor()</slot>
+ </slots>
+</ui>
