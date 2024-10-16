@@ -1,5 +1,5 @@
 from PySide6.QtWidgets import QWidget, QMessageBox, QListWidget
-from pantalla_actor import Ui_actor  # Asegúrate de que este import sea correcto
+from ui.pantalla_actor import Ui_actor  # Asegúrate de que este import sea correcto
 
 
 class VentanaBuscarPorActor(QWidget):

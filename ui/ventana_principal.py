@@ -1,8 +1,8 @@
 import json
 from PySide6.QtWidgets import QWidget, QMessageBox,QListWidgetItem
-from buscador import Ui_Buscador
-from ventana_actor import VentanaBuscarPorActor
-from ventana_info import VentanaInfo
+from ui.buscador import Ui_Buscador
+from ui.ventana_actor import VentanaBuscarPorActor
+from ui.ventana_info import VentanaInfo
 
 class BuscadorPeliculas(QWidget):
     def __init__(self):
