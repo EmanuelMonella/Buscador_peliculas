@@ -1,2 +1,7 @@
 .idea/
-    
+__pycache__/
+ui/__pycache__/
+ui/buscador.py
+ui/pantalla_actor.py
+ui/pantalla_resultado.py
+
