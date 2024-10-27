@@ -1,5 +1,5 @@
-from PySide6.QtWidgets import QWidget, QMessageBox, QListWidget
-from ui.pantalla_actor import Ui_actor  # Asegúrate de que este import sea correcto
+from PySide6.QtWidgets import QWidget, QMessageBox
+from ui.pantalla_actor import Ui_actor
 
 
 class VentanaBuscarPorActor(QWidget):
@@ -9,16 +9,17 @@ class VentanaBuscarPorActor(QWidget):
         self.ui.setupUi(self)
         self.catalogo = catalogo
 
+        self.ui.boton_buscar.clicked.connect(self.__buscar_actor)
+
     def __buscar_actor(self):
-        actores_input = self.ui.input_busqueda.text().strip().lower()
-        self.ui.resultados.clear()  # Limpiar resultados del QListWidget
+        actores_input = self.ui.input_busqueda.text().strip()
+        self.ui.resultados.clear()
         if actores_input:
-            actores = [actor.strip() for actor in actores_input.split(',')]
-            coincidencias = [p for p in self.catalogo if
-                             all(any(actor in a.lower() for a in p.get('actores', [])) for actor in actores)]
+            coincidencias = [pelicula for pelicula in self.catalogo if
+                             any(actor in pelicula.actores for actor in actores_input.split(','))]
             if coincidencias:
                 for pelicula in coincidencias:
-                    self.ui.resultados.addItem(pelicula['titulo'])  # Añadir películas al QListWidget
+                    self.ui.resultados.addItem(pelicula.titulo)
             else:
                 QMessageBox.information(self, "Resultado", "No se encontraron películas para esos actores.")
         else:
