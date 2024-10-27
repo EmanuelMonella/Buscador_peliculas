@@ -1,8 +1,6 @@
 import sys
-
 from PySide6.QtWidgets import QApplication
-
-from ui.ventana_principal  import BuscadorPeliculas
+from controlador import BuscadorPeliculas
 
 def main():
     app = QApplication(sys.argv)
