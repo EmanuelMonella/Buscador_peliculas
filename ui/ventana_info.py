@@ -1,6 +1,6 @@
 from PySide6.QtWidgets import QWidget
 from PySide6.QtGui import QPixmap
-from pantalla_resultado import Ui_info_peliculas
+from ui.pantalla_resultado import Ui_info_peliculas
 
 class VentanaInfo(QWidget):
     def __init__(self, pelicula):
