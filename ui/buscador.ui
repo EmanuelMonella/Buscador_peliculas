@@ -1,4 +1,3 @@
-
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>Buscador</class>
@@ -93,7 +92,7 @@
    <sender>boton_actor</sender>
    <signal>clicked()</signal>
    <receiver>Buscador</receiver>
-   <slot>_BuscadorPeliculas__abri_busqueda_por_actor()</slot>
+   <slot>_BuscadorPeliculas__abrir_busqueda_por_actor()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>108</x>
