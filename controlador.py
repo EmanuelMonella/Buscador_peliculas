@@ -11,9 +11,7 @@ class BuscadorPeliculas(QWidget):
         self.ui.setupUi(self)
         self.controlador = Controlador()
 
-        self.ui.boton_buscar_pelicula.clicked.connect(self.__buscar_pelicula)
-        self.ui.boton_actor.clicked.connect(self.__abrir_busqueda_por_actor)
-        self.ui.info.clicked.connect(self.__mostrar_info_pelicula)
+
 
     def __buscar_pelicula(self):
         nombre_pelicula = self.ui.input_pelicula.text().strip()
