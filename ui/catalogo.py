@@ -1,5 +1,5 @@
 import json
-from modelo import Pelicula
+from pelicula import Pelicula
 
 class Controlador:
     def __init__(self):
