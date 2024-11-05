@@ -6,8 +6,9 @@ class Pelicula:
         self.puntuacion = puntuacion
         self.poster = poster
 
-    def cargar_pelicula_desde_json(json):
-        return Pelicula(
+    @classmethod
+    def cargar_pelicula_desde_json(cls, json):
+        return cls(
             titulo=json['titulo'],
             actores=json['actores'],
             sinopsis=json['sinopsis'],
