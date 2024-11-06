@@ -1,7 +1,7 @@
 import json
 from pelicula import Pelicula
 
-class Controlador:
+class Catalogo:
     def __init__(self):
         self.catalogo = self.cargar_catalogo()
 
