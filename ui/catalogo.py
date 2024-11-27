@@ -12,25 +12,16 @@ class Catalogo:
             return [Pelicula.cargar_pelicula_desde_json(p) for p in data]
 
     def buscar_pelicula(self, nombre):
-        """
-        Busca películas cuyo título contenga la cadena proporcionada.
-        """
         return [pelicula for pelicula in self.catalogo if nombre.lower() in pelicula.titulo.lower()]
 
     def buscar_actor(self, actores_input):
-        """
-        Busca películas en las que participen todos los actores dados.
-        """
         actores = [actor.strip().lower() for actor in actores_input.split(',')]
         return [pelicula for pelicula in self.catalogo if
                 all(any(actor in a.lower() for a in pelicula.actores) for actor in actores)]
 
     def obtener_info_pelicula(self, titulo):
-        """
-        Devuelve la información de una película cuyo título coincida exactamente.
-        """
         for pelicula in self.catalogo:
-            if pelicula.titulo.strip().lower() == titulo.strip().lower():  # Ignora mayúsculas/minúsculas y espacios
+            if pelicula.titulo.strip().lower() == titulo.strip().lower():
                 return pelicula
         return None
 
