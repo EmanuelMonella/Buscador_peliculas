@@ -9,6 +9,7 @@ class VentanaBuscarPorActor(QWidget):
         self.ui.setupUi(self)
         self.catalogo = catalogo
 
+        self.ui.boton_buscar.clicked.connect(self.__buscar_actor)
 
     def __buscar_actor(self):
         actores_input = self.ui.input_busqueda.text().strip()

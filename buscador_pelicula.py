@@ -1,35 +1,52 @@
-from PySide6.QtWidgets import QWidget, QMessageBox, QListWidgetItem
+from PySide6.QtCore import Signal
+from PySide6.QtWidgets import QWidget, QMessageBox
 from ui.buscador import Ui_Buscador
-from ui.ventana_actor import VentanaBuscarPorActor
-from ui.ventana_info import VentanaInfo
-from controlador import Controlador
+
 
 class BuscadorPeliculas(QWidget):
+    # Señales
+    buscar_pelicula_signal = Signal(str)  # Emitirá el nombre de la película a buscar
+    mostrar_info_pelicula_signal = Signal(str)  # Emitirá el título de la película seleccionada
+    buscar_por_actor_signal = Signal()  # Nueva señal para búsqueda por actor
+
     def __init__(self):
         super().__init__()
         self.ui = Ui_Buscador()
         self.ui.setupUi(self)
-        self.controlador = Controlador()
 
-        self.ui.boton_buscar_pelicula.clicked.connect(self.__buscar_pelicula)
-        self.ui.lista_resutado.itemDoubleClicked.connect(self.__mostrar_info_pelicula)
-        self.ui.boton_actor.clicked.connect(self.__abrir_busqueda_por_actor)
+        # Conexión de botones a señales
+        self.ui.boton_buscar_pelicula.clicked.connect(self.__emitir_busqueda)
+        self.ui.info.clicked.connect(self.__emitir_info_pelicula)
+        self.ui.boton_actor.clicked.connect(self.__emitir_busqueda_por_actor)
 
-    def __buscar_pelicula(self):
+    def __emitir_busqueda(self):
+        """
+        Emite la señal para buscar una película basada en el texto ingresado.
+        """
         nombre_pelicula = self.ui.input_pelicula.text().strip()
-        mensaje = self.controlador.manejar_busqueda(nombre_pelicula, self.ui.lista_resutado)
-        if mensaje:
-            QMessageBox.information(self, "Resultado", mensaje)
+        self.buscar_pelicula_signal.emit(nombre_pelicula)
 
-    def __mostrar_info_pelicula(self):
+    def __emitir_info_pelicula(self):
+        """
+        Emite la señal para mostrar información sobre la película seleccionada.
+        """
         item = self.ui.lista_resutado.currentItem()
-        pelicula = self.controlador.mostrar_info_pelicula(item)
-        if pelicula:
-            self.ventana_info = VentanaInfo(pelicula)
-            self.ventana_info.show()
+        if item:
+            titulo = item.text().strip()
+            self.mostrar_info_pelicula_signal.emit(titulo)
         else:
             QMessageBox.warning(self, "Advertencia", "Por favor, seleccione una película.")
 
-    def __abrir_busqueda_por_actor(self):
-        self.ventana_actor = VentanaBuscarPorActor(self.controlador.catalogo)
-        self.ventana_actor.show()
+    def __emitir_busqueda_por_actor(self):
+        """
+        Emite la señal para abrir la búsqueda por actor.
+        """
+        self.buscar_por_actor_signal.emit()
+
+    def actualizar_lista_resultados(self, titulos):
+        """
+        Actualiza la lista de resultados con los títulos proporcionados.
+        """
+        self.ui.lista_resutado.clear()
+        for titulo in titulos:
+            self.ui.lista_resutado.addItem(titulo)

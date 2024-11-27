@@ -15,3 +15,9 @@ class Pelicula:
             puntuacion=json['puntuacion'],
             poster=json['poster']
         )
+
+    def __str__(self):
+        return (f"Título: {self.titulo}\n"
+                f"Actores: {', '.join(self.actores)}\n"
+                f"Sinopsis: {self.sinopsis}\n"
+                f"Puntuación: {self.puntuacion}")

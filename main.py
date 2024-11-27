@@ -1,11 +1,11 @@
 import sys
 from PySide6.QtWidgets import QApplication
-from buscador_pelicula import BuscadorPeliculas
+from controlador import Controlador
 
 def main():
     app = QApplication(sys.argv)
-    ventana = BuscadorPeliculas()
-    ventana.show()
+    ventana = Controlador()
+    ventana.buscador.show()
     sys.exit(app.exec())
 
 if __name__ == "__main__":
