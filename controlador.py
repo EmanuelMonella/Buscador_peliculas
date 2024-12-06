@@ -12,9 +12,9 @@ class Controlador:
         self.__ventana_actor = None
         self.__ventana_info = None
 
-        self.__buscador.buscar_pelicula_signal.connect(self.buscar_pelicula)
-        self.__buscador.mostrar_info_pelicula_signal.connect(self.mostrar_info_pelicula)
-        self.__buscador.buscar_por_actor_signal.connect(self.abrir_busqueda_por_actor)
+        self.__buscador.buscar_pelicula.connect(self.buscar_pelicula)
+        self.__buscador.mostrar_info_pelicula.connect(self.mostrar_info_pelicula)
+        self.__buscador.buscar_por_actor.connect(self.abrir_busqueda_por_actor)
 
     def mostrar_pantalla(self):
         self.__buscador.show()
