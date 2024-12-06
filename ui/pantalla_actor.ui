@@ -43,24 +43,7 @@
   </layout>
  </widget>
  <resources/>
- <connections>
-  <connection>
-   <sender>boton_buscar</sender>
-   <signal>clicked()</signal>
-   <receiver>actor</receiver>
-   <slot>_VentanaBuscarPorActor__buscar_actor()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>230</x>
-     <y>91</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>420</x>
-     <y>87</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
  <slots>
   <slot>_VentanaBuscarPorActor__buscar_actor()</slot>
  </slots>
