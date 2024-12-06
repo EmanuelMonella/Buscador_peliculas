@@ -4,8 +4,8 @@ from controlador import Controlador
 
 def main():
     app = QApplication(sys.argv)
-    ventana = Controlador()
-    ventana.buscador.show()
+    controlador = Controlador()
+    controlador.mostrar_pantalla()
     sys.exit(app.exec())
 
 if __name__ == "__main__":
