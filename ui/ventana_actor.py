@@ -15,11 +15,14 @@ class VentanaBuscarPorActor(QWidget):
         actores_input = self.__ui.input_busqueda.text().strip()
         self.__ui.resultados.clear()
         if actores_input:
-            coincidencias = [pelicula for pelicula in self.__catalogo if
-                             any(actor in pelicula.actores for actor in actores_input.split(','))]
+            actores = [actor.strip().lower() for actor in actores_input.split(',')]
+            coincidencias = [
+                pelicula for pelicula in self.__catalogo if
+                all(any(actor in a.lower() for a in pelicula.obtener_atributos()["actores"]) for actor in actores)
+            ]
             if coincidencias:
                 for pelicula in coincidencias:
-                    self.__ui.resultados.addItem(pelicula.titulo)
+                    self.__ui.resultados.addItem(pelicula.obtener_atributos()["titulo"])
             else:
                 QMessageBox.information(self, "Resultado", "No se encontraron películas para esos actores.")
         else:

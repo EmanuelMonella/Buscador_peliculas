@@ -1,9 +1,10 @@
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QMessageBox
-from ui.catalogo import Catalogo
-from buscador_pelicula import BuscadorPeliculas
+from catalogo import Catalogo
+from ui.ventana_busqueda import BuscadorPeliculas
 from ui.ventana_actor import VentanaBuscarPorActor
 from ui.ventana_info import VentanaInfo
+
 
 class Controlador:
     def __init__(self):
@@ -22,22 +23,28 @@ class Controlador:
     @Slot(str)
     def buscar_pelicula(self, nombre_pelicula):
         coincidencias = self.__catalogo.buscar_pelicula(nombre_pelicula)
-        self.__buscador.actualizar_lista_resultados([p.titulo for p in coincidencias])
+        self.__buscador.actualizar_lista_resultados(
+            [pelicula.obtener_atributos()["titulo"] for pelicula in coincidencias]
+        )
 
     @Slot(str)
     def mostrar_info_pelicula(self, titulo_pelicula):
         pelicula = self.__catalogo.obtener_info_pelicula(titulo_pelicula)
         if pelicula:
-            self.mostrar_ventana_info(pelicula)
+            self.mostrar_ventana_info(pelicula.obtener_atributos())
         else:
-            QMessageBox.warning(self.__buscador, "Advertencia", "No se encontró información de la película seleccionada.")
+            QMessageBox.warning(
+                self.__buscador,
+                "Advertencia",
+                "No se encontró información de la película seleccionada."
+            )
 
-    def mostrar_ventana_info(self, pelicula):
-        self.__ventana_info = VentanaInfo(pelicula)
+    def mostrar_ventana_info(self, pelicula_atributos):
+        self.__ventana_info = VentanaInfo(pelicula_atributos)
         self.__ventana_info.show()
 
     @Slot()
     def abrir_busqueda_por_actor(self):
         if self.__ventana_actor is None:
-            self.__ventana_actor = VentanaBuscarPorActor(self.__catalogo.catalogo)
+            self.__ventana_actor = VentanaBuscarPorActor(self.__catalogo.get_catalogo())
         self.__ventana_actor.show()
