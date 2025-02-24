@@ -1,4 +1,4 @@
-from actor import Actor
+from modelos.actor import Actor
 
 class Pelicula:
     def __init__(self, titulo, actores, sinopsis, puntuacion, poster):

@@ -1,6 +1,6 @@
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QMessageBox
-from catalogo import Catalogo
+from modelos.catalogo import Catalogo
 from ui.ventana_busqueda import BuscadorPeliculas
 from ui.ventana_actor import VentanaBuscarPorActor
 from ui.ventana_info import VentanaInfo

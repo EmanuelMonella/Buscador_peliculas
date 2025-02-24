@@ -1,15 +1,21 @@
 import json
-from pelicula import Pelicula
-
+from modelos.pelicula import Pelicula
 
 class Catalogo:
     def __init__(self):
         self.__catalogo = self.cargar_catalogo()
 
     def cargar_catalogo(self):
-        with open('peliculas/catalogo.json', 'r') as file:
-            archivo = json.load(file)
-            return [Pelicula.cargar_pelicula_desde_json(pelis) for pelis in archivo]
+        try:
+            with open('peliculas/catalogo.json', 'r') as file:
+                archivo = json.load(file)
+                return [Pelicula.cargar_pelicula_desde_json(pelis) for pelis in archivo]
+        except FileNotFoundError:
+            print("Error: El archivo catalogo.json no se encontró.")
+            return []
+        except json.JSONDecodeError:
+            print("Error: El archivo catalogo.json no es un JSON válido.")
+            return []
 
     def gestionar_catalogo(self):
         return self.__catalogo
