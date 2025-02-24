@@ -42,6 +42,13 @@
         "poster": "peliculas/rey.jpeg"
     },
     {
+        "titulo": "20",
+        "actores": ["Duarte", "Campaz"],
+        "sinopsis": "La historia de un club que siempre gana el clasico.",
+        "puntuacion": 8.5,
+        "poster": "peliculas/central.jpg"
+    },
+    {
         "titulo": "Volver al futuro",
         "actores": ["Michael J. Fox", "Christopher Lloyd"],
         "sinopsis": "Un adolescente viaja en el tiempo para asegurarse de que sus padres se conozcan.",

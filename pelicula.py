@@ -1,7 +1,9 @@
+from actor import Actor
+
 class Pelicula:
     def __init__(self, titulo, actores, sinopsis, puntuacion, poster):
         self.__titulo = titulo
-        self.__actores = actores
+        self.__actores = [Actor(actor) for actor in actores]
         self.__sinopsis = sinopsis
         self.__puntuacion = puntuacion
         self.__poster = poster
@@ -18,14 +20,14 @@ class Pelicula:
 
     def __str__(self):
         return (f"Título: {self.__titulo}\n"
-                f"Actores: {', '.join(self.__actores)}\n"
+                f"Actores: {', '.join(str(actor) for actor in self.__actores)}\n"
                 f"Sinopsis: {self.__sinopsis}\n"
                 f"Puntuación: {self.__puntuacion}")
 
     def obtener_atributos(self):
         return {
             "titulo": self.__titulo,
-            "actores": self.__actores,
+            "actores": [actor.obtener_nombre() for actor in self.__actores],
             "sinopsis": self.__sinopsis,
             "puntuacion": self.__puntuacion,
             "poster": self.__poster,

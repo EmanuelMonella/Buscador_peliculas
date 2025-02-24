@@ -9,7 +9,7 @@ class VentanaInfo(QWidget):
         super().__init__()
         self.__ui = Ui_info_peliculas()
         self.__ui.setupUi(self)
-
+        self.setWindowTitle("Resultado")
         self.__ui.resultado_titulo.setText(pelicula_atributos["titulo"])
         actores = ", ".join(pelicula_atributos["actores"])
         self.__ui.resultado_actores.setText(actores)

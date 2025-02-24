@@ -11,7 +11,7 @@ class Catalogo:
             archivo = json.load(file)
             return [Pelicula.cargar_pelicula_desde_json(pelis) for pelis in archivo]
 
-    def get_catalogo(self):
+    def gestionar_catalogo(self):
         return self.__catalogo
 
     def buscar_pelicula(self, nombre):

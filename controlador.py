@@ -46,5 +46,5 @@ class Controlador:
     @Slot()
     def abrir_busqueda_por_actor(self):
         if self.__ventana_actor is None:
-            self.__ventana_actor = VentanaBuscarPorActor(self.__catalogo.get_catalogo())
+            self.__ventana_actor = VentanaBuscarPorActor(self.__catalogo.gestionar_catalogo())
         self.__ventana_actor.show()
