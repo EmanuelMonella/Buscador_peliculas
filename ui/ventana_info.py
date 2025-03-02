@@ -3,7 +3,6 @@ from PySide6.QtGui import QPixmap
 from ui.pantalla_resultado import Ui_info_peliculas
 from PySide6.QtCore import QSize
 
-
 class VentanaInfo(QWidget):
     def __init__(self, pelicula_atributos):
         super().__init__()

@@ -23,18 +23,16 @@ class Catalogo:
     def buscar_pelicula(self, nombre):
         return [
             pelicula for pelicula in self.__catalogo
-            if nombre.lower() in pelicula.obtener_atributos()["titulo"].lower()
-        ]
+            if nombre.lower() in pelicula.obtener_atributos()["titulo"].lower()]
 
     def buscar_actor(self, actores_input):
         actores = [actor.strip().lower() for actor in actores_input.split(',')]
-        return [
-            pelicula for pelicula in self.__catalogo
-            if all(
-                any(actor in a.lower() for a in pelicula.obtener_atributos()["actores"])
-                for actor in actores
-            )
-        ]
+        peliculas_encontradas = []
+        for actor_nombre in actores:
+            for pelicula in self.__catalogo:
+                if pelicula.buscar_actor(actor_nombre):
+                    peliculas_encontradas.append(pelicula)
+        return list(set(peliculas_encontradas))
 
     def obtener_info_pelicula(self, titulo):
         for pelicula in self.__catalogo:

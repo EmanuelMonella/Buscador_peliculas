@@ -1,15 +1,14 @@
 from PySide6.QtCore import Slot
 from PySide6.QtWidgets import QMessageBox
 from modelos.catalogo import Catalogo
-from ui.ventana_busqueda import BuscadorPeliculas
+from ui.ventana_busqueda import VentanaBuscarPorPelicula
 from ui.ventana_actor import VentanaBuscarPorActor
 from ui.ventana_info import VentanaInfo
-
 
 class Controlador:
     def __init__(self):
         self.__catalogo = Catalogo()
-        self.__buscador = BuscadorPeliculas()
+        self.__buscador = VentanaBuscarPorPelicula()
         self.__ventana_actor = None
         self.__ventana_info = None
 
@@ -33,11 +32,7 @@ class Controlador:
         if pelicula:
             self.mostrar_ventana_info(pelicula.obtener_atributos())
         else:
-            QMessageBox.warning(
-                self.__buscador,
-                "Advertencia",
-                "No se encontró información de la película seleccionada."
-            )
+            QMessageBox.warning(self.__buscador, "Advertencia", "No se encontró información de la película seleccionada.")
 
     def mostrar_ventana_info(self, pelicula_atributos):
         self.__ventana_info = VentanaInfo(pelicula_atributos)
@@ -46,5 +41,23 @@ class Controlador:
     @Slot()
     def abrir_busqueda_por_actor(self):
         if self.__ventana_actor is None:
-            self.__ventana_actor = VentanaBuscarPorActor(self.__catalogo.gestionar_catalogo())
+            self.__ventana_actor = VentanaBuscarPorActor(self.__catalogo)
+            self.__ventana_actor.buscar_actor.connect(self.buscar_actor)
+            self.__ventana_actor.mostrar_info_pelicula.connect(self.mostrar_info_pelicula)
+
         self.__ventana_actor.show()
+
+    @Slot(str)
+    def buscar_actor(self, actores_input):
+        actores = [actor.strip().lower() for actor in actores_input.split(',')]
+        peliculas_encontradas = []
+        for actor_nombre in actores:
+            peliculas_encontradas.extend(self.__catalogo.buscar_actor(actor_nombre))
+
+        peliculas_encontradas = list(set(peliculas_encontradas))
+
+        if peliculas_encontradas:
+            titulos_peliculas = [pelicula.obtener_atributos()["titulo"] for pelicula in peliculas_encontradas]
+            self.__ventana_actor.actualizar_resultados(titulos_peliculas)
+        else:
+            QMessageBox.information(self.__ventana_actor, "Resultado", "No se encontraron películas para esos actores.")

@@ -9,17 +9,18 @@ class Pelicula:
         self.__poster = poster
 
     @classmethod
-    def cargar_pelicula_desde_json(cls, json):
+    def cargar_pelicula_desde_json(cls, archivo_json):
         return cls(
-            titulo=json['titulo'],
-            actores=json['actores'],
-            sinopsis=json['sinopsis'],
-            puntuacion=json['puntuacion'],
-            poster=json['poster']
+            titulo=archivo_json['titulo'],
+            actores=archivo_json['actores'],
+            sinopsis=archivo_json['sinopsis'],
+            puntuacion=archivo_json['puntuacion'],
+            poster=archivo_json['poster']
         )
 
     def __str__(self):
         return (f"Título: {self.__titulo}\n"
+                
                 f"Actores: {', '.join(str(actor) for actor in self.__actores)}\n"
                 f"Sinopsis: {self.__sinopsis}\n"
                 f"Puntuación: {self.__puntuacion}")
@@ -32,3 +33,6 @@ class Pelicula:
             "puntuacion": self.__puntuacion,
             "poster": self.__poster,
         }
+
+    def buscar_actor(self, actor_nombre):
+        return any(actor_nombre.lower() in actor.obtener_nombre().lower() for actor in self.__actores)

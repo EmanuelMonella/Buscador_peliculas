@@ -2,7 +2,7 @@ from PySide6.QtCore import Signal
 from PySide6.QtWidgets import QWidget, QMessageBox
 from ui.buscador import Ui_Buscador
 
-class BuscadorPeliculas(QWidget):
+class VentanaBuscarPorPelicula(QWidget):
     buscar_pelicula = Signal(str)
     mostrar_info_pelicula = Signal(str)
     buscar_por_actor = Signal()
